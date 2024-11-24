@@ -32,7 +32,7 @@ const HomePage = () => {
                         <div className="project-item" key={project}>
                             <img 
                                 src="/path-to-project-placeholder.jpg" 
-                                alt={Proyecto ${project}} 
+                                alt={`Proyecto ${project}`} 
                                 className="project-image" 
                             />
                             <h3>Título</h3>
