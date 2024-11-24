@@ -1,0 +1,106 @@
+.create-review-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 0 auto; 
+}
+
+/* Imagen Placeholder */
+.image-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-placeholder {
+  width: 350px; 
+  height: 350px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed #ddd;
+  border-radius: 15px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  position: relative;
+}
+
+.plus-icon {
+  font-size: 5rem;
+  color: #aaa;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Formulario */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+}
+
+.review-textarea {
+  min-height: 200px; 
+  resize: none;
+}
+
+/* Estrellas */
+.rating-stars {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.star {
+  font-size: 2rem;
+  color: #ddd;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.star:hover,
+.star.selected {
+  color: #f4a261;
+}
+
+/* Botón de Envío */
+.submit-btn {
+  background-color: #444;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #555;
+}
