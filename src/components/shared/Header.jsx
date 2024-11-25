@@ -32,7 +32,7 @@ const Header = () => {
                     <div className="user-info">
                         <i className="fas fa-user-circle"></i>
                         <span>{user.name}</span>
-                        <button onClick={handleLogout} className="btn btn-logout">Cerrar Sesión</button>
+                        <button onClick={handleLogout} className="delete">Cerrar Sesión</button>
                     </div>
                 ) : (
                     // Mostrar botones de inicio de sesión y registro si no está autenticado
