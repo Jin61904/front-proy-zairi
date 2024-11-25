@@ -8,16 +8,16 @@ const HomePage = () => {
         <div className="main-container">
             {/* Contenido centralizado */}
             <div className="content-container">
-                {/* Sección de bienvenida */}
-                <section id="welcome" className="welcome-section">
-                    <h1>Zairi Fabricamos</h1>
-                    <h2>Diseño Integral</h2>
-                    <img 
-                        src="/assets/imagen_principal.jpeg" 
-                        alt="Imagen destacada" 
-                        className="welcome-image" 
-                    />
-                </section>
+            {/* Sección de bienvenida */}
+            <section id="welcome" className="welcome-section">
+                <h1>Zairi Fabricamos</h1>
+                <h2>Diseño Integral</h2>
+                <img 
+                    src="/path-to-placeholder-image.jpg" 
+                    alt="Imagen destacada" 
+                    className="welcome-image" 
+                />
+            </section>
 
             {/* Sección "Quienes Somos" */}
             <section id="about" className="about-section">
