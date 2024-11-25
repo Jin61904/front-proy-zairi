@@ -1,0 +1,81 @@
+.quote-management {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quote-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.quote-form {
+  flex: 1;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quote-list {
+  flex: 2;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quote-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+}
+/* Estilos para el campo de detalles */
+.quote-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+  resize: vertical; /* Permitir redimensionar solo verticalmente */
+}
+
+.quote-form textarea:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Estilos para el campo de precio estimado */
+.quote-form input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.quote-form input[type="number"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Estilos para el campo de estado */
+.quote-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #ffffff;
+  transition: border-color 0.3s;
+}
+
+.quote-form select:focus {
+  border-color: #3498db;
+  outline: none;
+}
+  

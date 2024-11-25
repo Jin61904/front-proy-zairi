@@ -1,0 +1,51 @@
+.admin-dashboard {
+  display: flex;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  overflow: hidden; /* Evita que el contenido desborde */
+}
+
+.sidebar {
+  width: 250px; /* Ancho fijo para el sidebar */
+  background-color: #2c3e50; /* Fondo oscuro */
+  color: white;
+  position: fixed;
+  height: 100%; /* Altura completa de la ventana */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Se asegura de estar sobre el contenido dinámico */
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  margin-left: 250px; /* Espacio para el sidebar */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column; /* Asegura que el Navbar esté arriba */
+  overflow: hidden; /* Evita desbordamientos */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 250px; /* Comienza después del sidebar */
+  right: 0;
+  height: 70px; /* Altura del navbar */
+  background-color: #fff;
+  z-index: 1100; /* Siempre sobre el contenido */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper {
+  margin-top: 70px; /* Espacio debajo del navbar */
+  padding: 20px; /* Separación interna */
+  background-color: #ecf0f1; /* Fondo claro */
+  flex-grow: 1;
+  overflow-y: auto; /* Scroll solo para el contenido */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
