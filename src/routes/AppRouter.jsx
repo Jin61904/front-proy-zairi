@@ -14,7 +14,7 @@ const AppRouter = () => {
                 <Route path="/" element={<HomePage />} /> {/* Ruta para la página principal */}
                 <Route path="/reviews" element={<ReviewPage />} /> {/* Ruta para la página de reseñas */}
                 <Route path="/login" element={<LoginPage />} /> {/* Ruta para la página de reseñas */}
-                <Route path="/register" element={<RegisterPage />} /> {/* Ruta para la página de registro */}
+                <Route path="/login" element={<RegisterPage />} /> {/* Ruta para la página de registro */}
             </Routes>
         </Router>
     );
