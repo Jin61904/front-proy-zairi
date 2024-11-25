@@ -5,6 +5,7 @@ import ReviewPage from '../pages/ReviewPage';
 import Header from '../components/shared/Header';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
+import Footer from '../components/shared/Footer';
 
 const AppRouter = () => {
     return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
                 <Route path="/login" element={<LoginPage />} /> {/* Ruta para la página de reseñas */}
                 <Route path="/login" element={<RegisterPage />} /> {/* Ruta para la página de registro */}
             </Routes>
+            <Footer/>
         </Router>
     );
 };
