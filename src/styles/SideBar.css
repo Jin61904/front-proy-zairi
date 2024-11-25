@@ -1,6 +1,6 @@
 .sidebar {
   width: 250px;
-  background-color: #2c3e50;
+  background-color: #000000;
   color: white;
   padding: 20px;
   height: 100vh;
@@ -36,10 +36,10 @@
 }
 
 .sidebar-menu li a.active {
-  color: #3498db;
+  color: #EFB810;
   font-weight: bold;
 }
 
 .sidebar-menu li a:hover {
-  color: #2980b9;
+  color: #A87B05;
 }

@@ -6,7 +6,7 @@
 
 .sidebar {
   width: 250px; /* Ancho fijo para el sidebar */
-  background-color: #2c3e50; /* Fondo oscuro */
+  background-color: #000; /* Fondo oscuro */
   color: white;
   position: fixed;
   height: 100%; /* Altura completa de la ventana */
