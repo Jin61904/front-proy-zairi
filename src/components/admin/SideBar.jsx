@@ -6,7 +6,7 @@ const Sidebar = () => {
     return (
         <aside className="sidebar">
             <div className="sidebar-header">
-                <h3>Admin Panel</h3>
+                <h3>Panel de Administración</h3>
             </div>
             <ul className="sidebar-menu">
                 <li>
