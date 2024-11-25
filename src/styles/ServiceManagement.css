@@ -95,6 +95,7 @@ button:hover {
 button.secondary {
   background-color: #3498db; /* Azul para botones secundarios */
   color: #fff;
+  margin-left: 5px
 }
 
 button.secondary:hover {
@@ -104,7 +105,7 @@ button.secondary:hover {
 /* Botones de eliminar */
 button.delete {
   background-color: #e74c3c; /* Rojo para eliminar */
-  margin-left: 10px;
+  margin-left: 5px;
   color: #fff;
 }
 
@@ -113,6 +114,6 @@ button.delete:hover {
 }
 
 /* Espaciado entre botones */
-button + button {
-  margin-left: 10px; /* Espacio entre botones */
-}
+/* button + button {
+  margin-left: 10px; 
+} */
