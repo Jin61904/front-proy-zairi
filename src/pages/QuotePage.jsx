@@ -1,6 +1,6 @@
 // src/pages/QuotePage.jsx
 import React from 'react';
-import QuoteForm from '../components/Quotes/QuoteForm';
+import QuoteForm from '../components/quotes/QuoteForm';
 import quoteService from '../services/quoteService';
 import '../styles/QuotePage.css';
 

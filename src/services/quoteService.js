@@ -1,7 +1,7 @@
 // src/services/quoteService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/quotes'; // Cambia la URL según tu backend
+const API_URL = 'http://localhost:5000/api/quote'; // Cambia la URL según tu backend
 
 const submitQuote = async (data) => {
   try {

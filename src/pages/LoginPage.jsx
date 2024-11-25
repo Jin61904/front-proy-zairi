@@ -1,7 +1,7 @@
 
 // src/pages/LoginPage.jsx
 import React from 'react';
-import LoginForm from '../components/Login/LoginForm';
+import LoginForm from '../components/login/LoginForm';
 import '../styles/LoginPage.css';
 
 const LoginPage = () => {

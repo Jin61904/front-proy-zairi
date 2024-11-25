@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import '../styles/HomePage.css';
+
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const HomePage = () => {
