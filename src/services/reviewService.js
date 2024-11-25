@@ -13,3 +13,18 @@ export const createReview = async (reviewData) => {
     });
     return response.data;
 };
+
+export const deleteReview = async (reviewId) => {
+    const response = await axios.delete(`${API_URL}/review/${reviewId}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    });
+    return response.data;
+};
+
+export const updateReview = async (reviewId, reviewData) => {
+    const response = await axios.put(`${API_URL}/review/${reviewId}`, reviewData, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    });
+    return response.data;
+};
+
