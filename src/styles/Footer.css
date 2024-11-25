@@ -1,0 +1,32 @@
+.footer {
+  display: flex;
+  justify-content: flex-start; /* Mueve los íconos al lado izquierdo */
+  align-items: center;
+  background-color: #d3d3d3; /* Fondo gris claro */
+  padding: 20px 40px; /* Más espacio alrededor */
+  border-top: 1px solid #ccc;
+  height: 100px; /* Altura mayor */
+}
+
+.footer-icons {
+  display: flex;
+  gap: 15px; /* Más espacio entre los íconos */
+}
+
+.footer-icon-btn {
+  background: none;
+  border: none;
+  font-size: 20px; /* Íconos más grandes */
+  color: #000; /* Color negro para los íconos */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* Más espacio para los botones */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-icon-btn:hover {
+  color: #555; /* Cambia a gris oscuro al pasar el ratón */
+  transform: scale(1.1); /* Efecto de zoom */
+}
