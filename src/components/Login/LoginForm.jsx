@@ -14,15 +14,17 @@ const LoginForm = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const data = await loginUser(credentials);
-            setMessage(data.message); // Muestra el mensaje de éxito
-            localStorage.setItem('token', data.token); // Guarda el token en localStorage
-        } catch (error) {
-            setMessage(error.message); // Muestra el error
-        }
-    };
+      e.preventDefault();
+      try {
+          const data = await loginUser(credentials);
+          localStorage.setItem('token', data.token); // Guardar token
+          localStorage.setItem('user', JSON.stringify({ name: data.name, email: data.email })); // Guardar usuario
+          window.location.href = '/'; // Redirigir al home o recargar para actualizar
+      } catch (error) {
+          setMessage(error.message); // Mostrar mensaje de error
+      }
+  };
+  
 
     return (
         <div className="login-form">
