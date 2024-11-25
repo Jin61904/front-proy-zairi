@@ -1,13 +1,13 @@
 // src/pages/QuotePage.jsx
 import React from 'react';
 import QuoteForm from '../components/quotes/QuoteForm';
-import quoteService from '../services/quoteService';
+import {submitQuote} from '../services/quoteService';
 import '../styles/QuotePage.css';
 
 const QuotePage = () => {
   const handleQuoteSubmit = async (formData) => {
     try {
-      const response = await quoteService.submitQuote(formData);
+      const response = await submitQuote(formData);
       alert('Cotización enviada con éxito.');
     } catch (error) {
       alert('Hubo un error al enviar la cotización. Inténtalo de nuevo.');

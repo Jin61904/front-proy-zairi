@@ -1,23 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
-import ReviewPage from '../pages/ReviewPage';
-import Header from '../components/shared/Header';
-import LoginPage from '../pages/LoginPage';
-import RegisterPage from '../pages/RegisterPage';
-import Footer from '../components/shared/Footer';
+import AdminRoutes from './AdminRoutes';
+
+import HomePage from '../pages/HomePage'; // Landing pages
 import QuotePage from '../pages/QuotePage';
+import ReviewPage from '../pages/ReviewPage';
+import LoginPage from '../pages/LoginPage';
+import Header from '../components/shared/Header';
+import Footer from '../components/shared/Footer';
 
 const AppRouter = () => {
     return (
         <Router>
-            <Header /> {/* Componente de encabezado, se renderiza fuera de las rutas */}
+        <Header/>            
             <Routes>
-                <Route path="/" element={<HomePage />} /> {/* Ruta para la página principal */}
-                <Route path="/reviews" element={<ReviewPage />} /> {/* Ruta para la página de reseñas */}
-                <Route path="/login" element={<LoginPage />} /> {/* Ruta para la página de reseñas */}
-                <Route path="/register" element={<RegisterPage />} /> {/* Ruta para la página de registro */}
-                <Route path="/quotes" element={<QuotePage />} /> {/* Ruta para la página de registro */}
+                {/* Rutas públicas */}
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/reviews" element={<ReviewPage />} />
+                <Route path="/quotes" element={<QuotePage />} />
+
+                {/* Rutas protegidas para admin */}
+                <Route path="/*" element={<AdminRoutes />} />
             </Routes>
             <Footer/>
         </Router>
@@ -25,4 +29,3 @@ const AppRouter = () => {
 };
 
 export default AppRouter;
-
