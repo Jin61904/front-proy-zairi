@@ -8,6 +8,7 @@ import ReviewPage from '../pages/ReviewPage';
 import LoginPage from '../pages/LoginPage';
 import Header from '../components/shared/Header';
 import Footer from '../components/shared/Footer';
+import RegisterPage from '../pages/RegisterPage';
 
 const AppRouter = () => {
     return (
@@ -17,6 +18,7 @@ const AppRouter = () => {
                 {/* Rutas públicas */}
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
                 <Route path="/reviews" element={<ReviewPage />} />
                 <Route path="/quotes" element={<QuotePage />} />
 
