@@ -51,7 +51,6 @@ const CreateReview = ({ onReviewCreated }) => {
 
   return (
     <div className="create-review-container">
-      {/* Imagen Placeholder */}
       <div className="image-upload">
         <label htmlFor="file-input" className="image-placeholder">
           {selectedImage ? (
@@ -72,8 +71,7 @@ const CreateReview = ({ onReviewCreated }) => {
         />
       </div>
 
-      {/* Campos del Formulario */}
-      <div className="form-container">
+      <div className="form-fields">
         <input
           type="text"
           placeholder="Título"
@@ -87,8 +85,9 @@ const CreateReview = ({ onReviewCreated }) => {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         ></textarea>
+      </div>
 
-        {/* Estrellas */}
+      <div className="rating-and-submit">
         <div className="rating-stars">
           {[...Array(5)].map((_, index) => (
             <button
@@ -101,15 +100,11 @@ const CreateReview = ({ onReviewCreated }) => {
             </button>
           ))}
         </div>
-
-        {/* Mensaje de error */}
-        {error && <p className="error-message">{error}</p>}
-
-        {/* Botón de envío */}
         <button onClick={handleSubmit} className="submit-btn">
           Enviar
         </button>
       </div>
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };
