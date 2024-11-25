@@ -1,30 +1,35 @@
-// src/components/LoginForm.jsx
 import React, { useState } from 'react';
-import { loginUser } from '../../services/authService';
+import { loginUser, getCurrentUser } from '../../services/authService';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
-    const [credentials, setCredentials] = useState({
-        email: '',
-        password: '',
-    });
+    const [credentials, setCredentials] = useState({ email: '', password: '' });
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-          const data = await loginUser(credentials);
-          localStorage.setItem('token', data.token); // Guardar token
-          localStorage.setItem('user', JSON.stringify({ name: data.name, email: data.email })); // Guardar usuario
-          window.location.href = '/'; // Redirigir al home o recargar para actualizar
-      } catch (error) {
-          setMessage(error.message); // Mostrar mensaje de error
-      }
-  };
-  
+        e.preventDefault();
+        try {
+            const data = await loginUser(credentials);
+            localStorage.setItem('token', data.token);
+
+            const user = await getCurrentUser(); // Obtener datos completos del usuario
+            localStorage.setItem('user', JSON.stringify(user));
+
+            // Redirigir según el rol
+            if (user.role === 'admin') {
+                navigate('/admin');
+            } else {
+                navigate('/');
+            }
+        } catch (error) {
+            setMessage(error.message);
+        }
+    };
 
     return (
         <div className="login-form">
@@ -49,7 +54,6 @@ const LoginForm = () => {
                 <button type="submit">Entrar</button>
             </form>
             {message && <p className="message">{message}</p>}
-            <p className="forgot-password">¿Olvidó su contraseña?</p>
         </div>
     );
 };
