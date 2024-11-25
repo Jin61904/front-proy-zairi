@@ -88,4 +88,40 @@
   border-color: #3498db;
   outline: none;
 }
+
+.quote-management button {
+  background-color: #1abc9c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.quote-management button:hover {
+  background-color: #16a085;
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.quote-management button.secondary {
+  background-color: #3498db;
+  margin-left: 5px;
+}
+
+.quote-management button.secondary:hover {
+  background-color: #2980b9;
+}
+
+.quote-management button.delete {
+  background-color: #e74c3c;
+  margin-left: 5px;
+}
+
+.quote-management button.delete:hover {
+  background-color: #c0392b;
+}
   

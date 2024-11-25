@@ -9,7 +9,7 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.services-list {
+.service-management-container .services-list {
   flex: 2;
   padding: 20px;
   background: #f9f9f9;
@@ -17,16 +17,16 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.services-list h3 {
+.service-management-container .services-list h3 {
   margin-bottom: 15px;
 }
 
-.services-list ul {
+.service-management-container .services-list ul {
   list-style: none;
   padding: 0;
 }
 
-.services-list li {
+.service-management-container .services-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +37,7 @@
   border-radius: 4px;
 }
 
-.add-service {
+.service-management-container .add-service {
   flex: 1;
   padding: 20px;
   background: #f9f9f9;
@@ -45,11 +45,11 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.add-service h3 {
+.service-management-container .add-service h3 {
   margin-bottom: 15px;
 }
 
-.add-service input {
+.service-management-container .add-service input {
   width: 100%;
   margin-bottom: 10px;
   padding: 10px;
@@ -57,63 +57,39 @@
   border-radius: 4px;
 }
 
-/* .add-service button {
-  width: 100%;
-  padding: 10px;
-  background: #3498db;
+/* Botones generales para este componente */
+.service-management-container button {
+  background-color: #1abc9c;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
   cursor: pointer;
-} */
-
-/* .add-service button:hover {
-  background: #2980b9;
-} */
-
-/* Botones generales */
-button {
-  background-color: #1abc9c; /* Color principal del botón */
-  color: #fff; /* Texto blanco */
-  border: none; /* Sin bordes */
-  padding: 10px 20px; /* Espaciado interno */
-  font-size: 16px; /* Tamaño de fuente */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
-  transition: all 0.3s ease; /* Transiciones suaves */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-/* Efecto hover */
-button:hover {
-  background-color: #16a085; /* Color más oscuro al pasar el mouse */
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
-  transform: translateY(-2px); /* Eleva ligeramente el botón */
+.service-management-container button:hover {
+  background-color: #16a085;
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
-/* Botones de acción secundaria */
-button.secondary {
-  background-color: #3498db; /* Azul para botones secundarios */
-  color: #fff;
-  margin-left: 5px
-}
-
-button.secondary:hover {
-  background-color: #2980b9; /* Azul más oscuro al pasar el mouse */
-}
-
-/* Botones de eliminar */
-button.delete {
-  background-color: #e74c3c; /* Rojo para eliminar */
+.service-management-container button.secondary {
+  background-color: #3498db;
   margin-left: 5px;
-  color: #fff;
 }
 
-button.delete:hover {
-  background-color: #c0392b; /* Rojo más oscuro al pasar el mouse */
+.service-management-container button.secondary:hover {
+  background-color: #2980b9;
 }
 
-/* Espaciado entre botones */
-/* button + button {
-  margin-left: 10px; 
-} */
+.service-management-container button.delete {
+  background-color: #e74c3c;
+  margin-left: 5px;
+}
+
+.service-management-container button.delete:hover {
+  background-color: #c0392b;
+}

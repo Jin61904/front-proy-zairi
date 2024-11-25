@@ -75,7 +75,7 @@
   gap: 0.7rem;
 }
 
-.star {
+button.star {
   font-size: 2rem;
   color: #ddd;
   background: none;
@@ -84,13 +84,13 @@
   transition: color 0.3s;
 }
 
-.star:hover,
-.star.selected {
+button.star:hover,
+button.star.selected {
   color: #f4a261;
 }
 
 /* Botón de Envío */
-.submit-btn {
+button.submit-btn {
   background-color: #444;
   color: white;
   padding: 1rem 2rem;
@@ -101,6 +101,6 @@
   transition: background-color 0.3s;
 }
 
-.submit-btn:hover {
+button.submit-btn:hover {
   background-color: #555;
 }
