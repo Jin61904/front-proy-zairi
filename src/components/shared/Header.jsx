@@ -1,16 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../../styles/Header.css'; // Archivo de estilos
+// src/components/layout/Header.jsx
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
+import "../../styles/Header.css"; // Archivo de estilos
 
 const Header = () => {
-    // Verificar si hay un usuario en localStorage
-    const user = JSON.parse(localStorage.getItem('user'));
-
-    const handleLogout = () => {
-        localStorage.removeItem('user'); // Eliminar usuario del localStorage
-        localStorage.removeItem('token'); // Eliminar token del localStorage
-        window.location.reload(); // Recargar para actualizar el estado
-    };
+    const { user, logoutUser } = useContext(UserContext);
 
     return (
         <header className="header">
@@ -28,14 +23,12 @@ const Header = () => {
             </nav>
             <div className="auth-section">
                 {user ? (
-                    // Mostrar nombre e ícono si el usuario está autenticado
                     <div className="user-info">
                         <i className="fas fa-user-circle"></i>
                         <span>{user.name}</span>
-                        <button onClick={handleLogout} className="delete">Cerrar Sesión</button>
+                        <button onClick={logoutUser} className="delete">Cerrar Sesión</button>
                     </div>
                 ) : (
-                    // Mostrar botones de inicio de sesión y registro si no está autenticado
                     <div className="auth-buttons">
                         <Link to="/login" className="btn btn-outline">Iniciar Sesión</Link>
                         <Link to="/register" className="btn btn-solid">Registrarme</Link>
