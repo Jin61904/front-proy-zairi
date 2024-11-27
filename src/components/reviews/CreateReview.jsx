@@ -51,7 +51,7 @@ const CreateReview = ({ onReviewCreated }) => {
 
   return (
     <div className="create-review-container">
-      <div className="image-upload">
+      <div className="image-section">
         <label htmlFor="file-input" className="image-placeholder">
           {selectedImage ? (
             <img
@@ -69,25 +69,6 @@ const CreateReview = ({ onReviewCreated }) => {
           onChange={handleImageChange}
           style={{ display: "none" }}
         />
-      </div>
-
-      <div className="form-fields">
-        <input
-          type="text"
-          placeholder="Título"
-          className="form-input title-input"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Escribe tu reseña"
-          className="form-input review-textarea"
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        ></textarea>
-      </div>
-
-      <div className="rating-and-submit">
         <div className="rating-stars">
           {[...Array(5)].map((_, index) => (
             <button
@@ -100,11 +81,27 @@ const CreateReview = ({ onReviewCreated }) => {
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="form-section">
+        <input
+          type="text"
+          placeholder="Título"
+          className="form-input"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <textarea
+          placeholder="Escribe tu reseña"
+          className="form-textarea"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        ></textarea>
         <button onClick={handleSubmit} className="submit-btn">
           Enviar
         </button>
+        {error && <p className="error-message">{error}</p>}
       </div>
-      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };
