@@ -20,38 +20,39 @@ const QuoteManagement = () => {
   const [editingQuote, setEditingQuote] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Cargar cotizaciones y servicios al montar el componente
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const [quotesData, projectsData] = await Promise.all([
-          fetchQuotes(),
-          getProjects(),
-        ]);
-        setQuotes(quotesData || []);
-        setProjects(projectsData || []);
-      } catch (error) {
-        console.error("Error al cargar datos:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Función para cargar datos (cotizaciones y servicios)
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const [quotesData, projectsData] = await Promise.all([
+        fetchQuotes(),
+        getProjects(),
+      ]);
+      setQuotes(quotesData || []);
+      setProjects(projectsData || []);
+    } catch (error) {
+      console.error("Error al cargar datos:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  // Cargar datos al montar el componente
+  useEffect(() => {
     fetchData();
   }, []);
 
   // Crear una nueva cotización
   const handleCreate = async () => {
     try {
-      const createdQuote = await submitQuote(newQuote);
-      setQuotes([...quotes, createdQuote]);
+      await submitQuote(newQuote);
       setNewQuote({
         serviceId: "",
         details: "",
         estimatedPrice: "",
         status: "Pendiente",
       });
+      fetchData(); // Volver a cargar la lista de cotizaciones
     } catch (error) {
       console.error("Error al crear la cotización:", error);
     }
@@ -60,13 +61,9 @@ const QuoteManagement = () => {
   // Actualizar una cotización existente
   const handleUpdate = async () => {
     try {
-      const updatedQuote = await updateQuote(editingQuote._id, editingQuote);
-      setQuotes(
-        quotes.map((quote) =>
-          quote._id === editingQuote._id ? updatedQuote : quote
-        )
-      );
+      await updateQuote(editingQuote._id, editingQuote);
       setEditingQuote(null); // Salir del modo de edición
+      fetchData(); // Volver a cargar la lista de cotizaciones
     } catch (error) {
       console.error("Error al actualizar la cotización:", error);
     }
@@ -76,7 +73,7 @@ const QuoteManagement = () => {
   const handleDelete = async (id) => {
     try {
       await deleteQuote(id);
-      setQuotes(quotes.filter((quote) => quote._id !== id));
+      fetchData(); // Volver a cargar la lista de cotizaciones
     } catch (error) {
       console.error("Error al eliminar la cotización:", error);
     }
@@ -196,8 +193,8 @@ const QuoteManagement = () => {
                         }
                       >
                         <option value="Pendiente">Pendiente</option>
-                        <option value="Aprobada">Finalizado</option>
-                        <option value="Rechazada">Cancelado</option>
+                        <option value="Aprobada">Aprobada</option>
+                        <option value="Rechazada">Rechazada</option>
                       </select>
                       <button className="secondary" onClick={handleUpdate}>
                         Guardar

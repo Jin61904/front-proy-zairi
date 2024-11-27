@@ -9,7 +9,7 @@ export const fetchReviews = async () => {
 
 export const createReview = async (reviewData) => {
     const response = await axios.post(`${API_URL}/review`, reviewData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     });
     return response.data;
 };

@@ -11,36 +11,42 @@ import "../../styles/ReviewManagement.css";
 const ReviewManagement = () => {
   const [reviews, setReviews] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [newReview, setNewReview] = useState({ serviceId: "", comment: "", rating: "" });
+  const [newReview, setNewReview] = useState({
+    serviceId: "",
+    comment: "",
+    rating: "",
+  });
   const [editingReview, setEditingReview] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Cargar reseñas y servicios al montar el componente
+  // Función para cargar datos (reseñas y servicios)
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const [reviewsData, projectsData] = await Promise.all([
+        fetchReviews(),
+        getProjects(),
+      ]);
+      setReviews(reviewsData || []);
+      setProjects(projectsData || []);
+    } catch (error) {
+      console.error("Error al cargar datos:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Cargar datos al montar el componente
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const [reviewsData, projectsData] = await Promise.all([
-          fetchReviews(),
-          getProjects(),
-        ]);
-        setReviews(reviewsData || []);
-        setProjects(projectsData || []);
-      } catch (error) {
-        console.error("Error al cargar datos:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchData();
   }, []);
 
   // Manejar creación de nueva reseña
   const handleCreate = async () => {
     try {
-      const createdReview = await createReview(newReview);
-      setReviews([...reviews, createdReview]);
+      await createReview(newReview);
       setNewReview({ serviceId: "", comment: "", rating: "" });
+      fetchData(); // Volver a cargar la lista de reseñas
     } catch (error) {
       console.error("Error al crear la reseña:", error);
     }
@@ -49,13 +55,9 @@ const ReviewManagement = () => {
   // Manejar actualización de una reseña
   const handleUpdate = async () => {
     try {
-      const updatedReview = await updateReview(editingReview._id, editingReview);
-      setReviews(
-        reviews.map((review) =>
-          review._id === editingReview._id ? updatedReview : review
-        )
-      );
+      await updateReview(editingReview._id, editingReview);
       setEditingReview(null); // Salir del modo de edición
+      fetchData(); // Volver a cargar la lista de reseñas
     } catch (error) {
       console.error("Error al actualizar la reseña:", error);
     }
@@ -65,7 +67,7 @@ const ReviewManagement = () => {
   const handleDelete = async (id) => {
     try {
       await deleteReview(id);
-      setReviews(reviews.filter((review) => review._id !== id));
+      fetchData(); // Volver a cargar la lista de reseñas
     } catch (error) {
       console.error("Error al eliminar la reseña:", error);
     }
@@ -95,6 +97,14 @@ const ReviewManagement = () => {
           </select>
           <input
             type="text"
+            placeholder="Titulo"
+            value={newReview.title}
+            onChange={(e) =>
+              setNewReview({ ...newReview, title: e.target.value })
+            }
+          />
+          <input
+            type="text"
             placeholder="Comentario"
             value={newReview.comment}
             onChange={(e) =>
@@ -112,7 +122,9 @@ const ReviewManagement = () => {
           <button
             className="primary"
             onClick={handleCreate}
-            disabled={!newReview.serviceId || !newReview.comment || !newReview.rating}
+            disabled={
+              !newReview.serviceId || !newReview.comment || !newReview.rating
+            }
           >
             Crear Reseña
           </button>
@@ -149,6 +161,16 @@ const ReviewManagement = () => {
                       </select>
                       <input
                         type="text"
+                        value={editingReview.title}
+                        onChange={(e) =>
+                          setEditingReview({
+                            ...editingReview,
+                            title: e.target.value,
+                          })
+                        }
+                      />
+                      <input
+                        type="text"
                         value={editingReview.comment}
                         onChange={(e) =>
                           setEditingReview({
@@ -181,7 +203,7 @@ const ReviewManagement = () => {
                     // Vista normal de una reseña
                     <div className="review">
                       <span>
-                        {review.serviceId?.type || "Servicio no definido"} -{" "}
+                        {review.serviceId?.type || "Servicio no definido"} - {review.title} -
                         {review.comment} - {review.rating}/5
                       </span>
                       <button

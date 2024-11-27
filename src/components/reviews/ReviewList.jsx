@@ -31,7 +31,7 @@ const ReviewList = ({ refresh }) => {
                                 <span>Imagen</span>
                             </div>
                             <div className="review-content">
-                                <h3>Reseña de Cliente</h3>
+                                <h3>{review.title}</h3>
                                 <p>{review.comment}</p>
                                 <p className="review-rating">Calificación: {review.rating}/5</p>
                             </div>

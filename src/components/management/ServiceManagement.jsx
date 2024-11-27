@@ -16,49 +16,50 @@ const ServiceManagement = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        setLoading(true);
-        const servicesData = await getProjects();
-        setServices(servicesData || []);
-      } catch (error) {
-        console.error("Error al cargar servicios:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Función para cargar los servicios
+  const fetchServices = async () => {
+    try {
+      setLoading(true);
+      const servicesData = await getProjects();
+      setServices(servicesData || []);
+    } catch (error) {
+      console.error("Error al cargar servicios:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  // Cargar los servicios al montar el componente
+  useEffect(() => {
     fetchServices();
   }, []);
 
+  // Crear un nuevo servicio
   const handleCreate = async () => {
     try {
-      const createdService = await createProject(newService);
-      setServices([...services, createdService]);
+      await createProject(newService);
       setNewService({ type: "", description: "", price: "" });
+      fetchServices(); // Volver a cargar la lista de servicios
     } catch (error) {
       console.error("Error al crear el servicio:", error);
     }
   };
 
+  // Actualizar un servicio existente
   const handleUpdate = async (id, updatedData) => {
     try {
-      const updatedService = await updateProject(id, updatedData);
-      setServices(
-        services.map((service) =>
-          service._id === id ? updatedService : service
-        )
-      );
+      await updateProject(id, updatedData);
+      fetchServices(); // Volver a cargar la lista de servicios
     } catch (error) {
       console.error("Error al actualizar el servicio:", error);
     }
   };
 
+  // Eliminar un servicio existente
   const handleDelete = async (id) => {
     try {
       await deleteProject(id);
-      setServices(services.filter((service) => service._id !== id));
+      fetchServices(); // Volver a cargar la lista de servicios
     } catch (error) {
       console.error("Error al eliminar el servicio:", error);
     }
@@ -131,7 +132,7 @@ const ServiceManagement = () => {
           }
         />
         <button
-        className="primary"
+          className="primary"
           onClick={handleCreate}
           disabled={!newService.type || !newService.price}
         >

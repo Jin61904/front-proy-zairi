@@ -32,12 +32,16 @@ const CreateReview = ({ onReviewCreated }) => {
       formData.append("image", selectedImage);
     }
 
+    for (let pair of formData.entries()) {
+      console.log(pair[0], pair[1]); // Esto imprimirá los campos y valores
+    }
+
     try {
       await createReview(formData);
       setTitle("");
       setComment("");
       setRating(0);
-      setSelectedImage(null);
+      //setSelectedImage(null);
       setError("");
       alert("Reseña creada exitosamente.");
       if (onReviewCreated) {
