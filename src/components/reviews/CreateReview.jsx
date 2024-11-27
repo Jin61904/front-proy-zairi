@@ -24,28 +24,22 @@ const CreateReview = ({ onReviewCreated }) => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("comment", comment);
-    formData.append("rating", rating);
-    if (selectedImage) {
-      formData.append("image", selectedImage);
-    }
-
-    for (let pair of formData.entries()) {
-      console.log(pair[0], pair[1]); // Esto imprimirá los campos y valores
-    }
+    const reviewData = {
+      title,
+      comment,
+      rating,
+    };
 
     try {
-      await createReview(formData);
+      await createReview(reviewData);
       setTitle("");
       setComment("");
       setRating(0);
-      //setSelectedImage(null);
+      setSelectedImage(null); // Limpia la imagen seleccionada
       setError("");
       alert("Reseña creada exitosamente.");
       if (onReviewCreated) {
-        onReviewCreated();
+        onReviewCreated(); // Llama a la función para recargar datos en ReviewManagement
       }
     } catch (error) {
       console.error("Error al crear la reseña:", error);
